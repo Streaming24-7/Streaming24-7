@@ -18,14 +18,20 @@ body {
 
 .sidebar {
   width: 240px;
-  background-color: #111;
+  background: linear-gradient(180deg, #111 0%, #222 100%);
   color: #fff;
   padding: 20px;
+  animation: slide-in 1s ease-out;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+  background-size: 400% 400%;
+  animation: gradientBG 10s ease infinite;
 }
 
 .sidebar h1 {
-  font-size: 22px;
-  margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-shadow: 0 0 5px rgba(255,255,255,0.2);
 }
 
 .sidebar ul {
@@ -37,13 +43,31 @@ body {
 }
 
 .sidebar ul li a {
+  display: inline-block;
   color: #fff;
-  text-decoration: none;
   font-size: 16px;
+  text-decoration: none;
+  padding: 5px 0;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.sidebar ul li a::before {
+  content: '▶';
+  position: absolute;
+  left: -20px;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.sidebar ul li a:hover::before {
+  opacity: 1;
+  left: -15px;
+  color: #00ffcc;
 }
 
 .sidebar ul li a:hover {
-  text-decoration: underline;
+  color: #00ffcc;
 }
 
 .main-content {
@@ -117,7 +141,7 @@ body {
   background-color: #25d366;
   color: #fff;
   font-size: 24px;
-  padding: 15px;
+  padding: 12px;
   border-radius: 50%;
   text-align: center;
   text-decoration: none;
@@ -129,3 +153,26 @@ body {
   background-color: #1ebc5c;
 }
 
+/* Animaciones */
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
