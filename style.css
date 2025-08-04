@@ -1,12 +1,18 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { font-family: Arial, sans-serif; display: flex; height: 100vh; background: #f4f4f4; }
 .container { display: flex; width: 100%; }
+
 .sidebar {
   width: 240px;
   background: #000000; /* fondo negro sólido */
   padding: 20px;
   box-shadow: 2px 0 10px rgba(0,0,0,0.5);
 }
+
+.logo, .logo span {
+  color: white;
+}
+
 .sidebar h1 { font-size: 24px; font-weight: bold; text-shadow: 0 0 5px rgba(255,255,255,0.2); margin-bottom: 30px; }
 .sidebar ul { list-style: none; }
 .sidebar ul li { margin: 15px 0; }
@@ -90,4 +96,3 @@ body { font-family: Arial, sans-serif; display: flex; height: 100vh; background:
 }
 .whatsapp-float img { width: 30px; height: auto; }
 
-/* Eliminadas las animaciones slide-in y gradientBG para la barra lateral */
