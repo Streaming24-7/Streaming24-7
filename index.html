@@ -1,33 +1,64 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Streaming24/7</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
+    <!-- Barra lateral animada -->
     <nav class="sidebar">
-      <h1>Streaming24/7</h1>
+      <h1>Streaming<span style="color:#00ffcc">24/7</span></h1>
       <ul>
-        <li><a href="#" id="nav-inicio">Inicio</a></li>
-        <li><a href="#" id="nav-tienda">Tienda</a></li>
-        <li><a href="#" id="nav-cuenta">Mi cuenta</a></li>
-        <li><a href="#" id="nav-carrito">Carrito</a></li>
-        <li><a href="#" id="nav-recargas">Recargas</a></li>
-        <li><a href="#" id="nav-cerrar">Cerrar sesión</a></li>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Tienda</a></li>
+        <li><a href="#">Mi cuenta</a></li>
+        <li><a href="#">Carrito</a></li>
+        <li><a href="#">Recargas</a></li>
+        <li><a href="#">Cerrar sesión</a></li>
       </ul>
     </nav>
-    <main class="main-content" id="main-content">
-      <!-- Aquí se cargará el contenido -->
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+      <h2>Servicios disponibles</h2>
+      <div class="product-grid">
+        
+        <!-- Producto 1 -->
+        <div class="product-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/75/Netflix_icon.svg" alt="Netflix">
+          <h3>Netflix Premium</h3>
+          <p><del>$8.000</del> $3.500</p>
+          <a href="#" class="btn">Comprar ahora</a>
+        </div>
+
+        <!-- Producto 2 -->
+        <div class="product-card">
+          <!-- Imagen Prime Video mejor adaptada -->
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" alt="Prime Video">
+          <h3>Prime Video</h3>
+          <p><del>$7.000</del> $4.200</p>
+          <a href="#" class="btn">Comprar ahora</a>
+        </div>
+
+        <!-- Producto 3 -->
+        <div class="product-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg" alt="Disney+">
+          <h3>Disney+ Premium</h3>
+          <p><del>$8.000</del> $5.500</p>
+          <a href="#" class="btn">Comprar ahora</a>
+        </div>
+
+      </div>
     </main>
   </div>
 
-  <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-float" title="WhatsApp">
-    <img src="whatsapp-icon.png" alt="WhatsApp" style="width:28px; height:28px;" />
+  <!-- Botón flotante de WhatsApp -->
+  <a href="https://wa.me/573001234567" class="whatsapp-float" target="_blank" title="Contáctanos por WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
   </a>
-
-  <script src="script.js"></script>
 </body>
 </html>
+
