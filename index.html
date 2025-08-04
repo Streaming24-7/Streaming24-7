@@ -1,40 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Streaming24/7</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Streaming24/7</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <aside class="sidebar">
-      <h1>Streaming24-7</h1>
+    <nav class="sidebar">
+      <h1>Streaming24/7</h1>
       <ul>
-        <li><a href="#">Inicio</a></li>
-        <li><a href="#">Tienda</a></li>
-        <li><a href="#">Mi cuenta</a></li>
-        <li><a href="#" id="carrito-link">Carrito</a></li>
-        <li><a href="#">Recargas</a></li>
-        <li><a href="#">Cerrar sesión</a></li>
+        <li><a href="#" id="nav-inicio">Inicio</a></li>
+        <li><a href="#" id="nav-tienda">Tienda</a></li>
+        <li><a href="#" id="nav-cuenta">Mi cuenta</a></li>
+        <li><a href="#" id="nav-carrito">Carrito</a></li>
+        <li><a href="#" id="nav-recargas">Recargas</a></li>
+        <li><a href="#" id="nav-cerrar">Cerrar sesión</a></li>
       </ul>
-    </aside>
-    <main class="main-content">
-      <h2>Productos</h2>
-      <div class="product-grid" id="products"></div>
-
-      <h2>Carrito de compras</h2>
-      <div id="cart-container">
-        <p id="empty-cart">No hay productos en el carrito.</p>
-        <ul id="cart-items"></ul>
-        <p id="cart-total">Total: $0</p>
-        <button id="clear-cart">Vaciar carrito</button>
-      </div>
+    </nav>
+    <main class="main-content" id="main-content">
+      <!-- Aquí se cargará el contenido -->
     </main>
   </div>
 
-  <a href="https://wa.me/573227377002" class="whatsapp-float" target="_blank" aria-label="WhatsApp Chat">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="28" />
+  <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-float" title="WhatsApp">
+    <img src="whatsapp-icon.png" alt="WhatsApp" style="width:28px; height:28px;" />
   </a>
 
   <script src="script.js"></script>
