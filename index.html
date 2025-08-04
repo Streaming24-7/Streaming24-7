@@ -1,46 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Streaming24-7</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Streaming24/7</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="sidebar">
-    <h1>Streaming24-7</h1>
-    <ul>
-      <li><a href="#">Inicio</a></li>
-      <li><a href="#">Tienda</a></li>
-      <li><a href="#">Mi cuenta</a></li>
-      <li><a href="#" id="carrito-btn">Carrito <i class="fas fa-shopping-cart"></i></a></li>
-      <li><a href="#">Recargas</a></li>
-      <li><a href="#">Cerrar sesión</a></li>
-    </ul>
-  </div>
+  <div class="container">
+    <aside class="sidebar">
+      <h1>Streaming24-7</h1>
+      <ul>
+        <li><a href="#">Inicio</a></li>
+        <li><a href="#">Tienda</a></li>
+        <li><a href="#">Mi cuenta</a></li>
+        <li><a href="#" id="carrito-link">Carrito</a></li>
+        <li><a href="#">Recargas</a></li>
+        <li><a href="#">Cerrar sesión</a></li>
+      </ul>
+    </aside>
+    <main class="main-content">
+      <h2>Productos</h2>
+      <div class="product-grid" id="products"></div>
 
-  <div class="main-content">
-    <h2>Productos</h2>
-    <div class="product-grid" id="product-grid">
-      <!-- Productos se cargan aquí dinámicamente -->
-    </div>
-  </div>
-
-  <!-- Carrito Modal -->
-  <div id="carrito-modal" class="modal">
-    <div class="modal-content">
-      <span class="close" id="close-carrito">&times;</span>
       <h2>Carrito de compras</h2>
-      <div id="carrito-items"></div>
-      <h3 id="total">Total: $0</h3>
-      <button id="vaciar-carrito">Vaciar carrito</button>
-    </div>
+      <div id="cart-container">
+        <p id="empty-cart">No hay productos en el carrito.</p>
+        <ul id="cart-items"></ul>
+        <p id="cart-total">Total: $0</p>
+        <button id="clear-cart">Vaciar carrito</button>
+      </div>
+    </main>
   </div>
 
-  <!-- Botón WhatsApp -->
-  <a href="https://wa.me/573001234567" target="_blank" class="whatsapp-float" title="Chatear por WhatsApp">
-    <i class="fab fa-whatsapp"></i>
+  <a href="https://wa.me/573227377002" class="whatsapp-float" target="_blank" aria-label="WhatsApp Chat">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="28" />
   </a>
 
   <script src="script.js"></script>
