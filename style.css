@@ -1,178 +1,76 @@
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: 'Roboto', sans-serif;
-  display: flex;
-  height: 100vh;
-  background-color: #f4f4f4;
-}
-
-.container {
-  display: flex;
-  width: 100%;
-}
-
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Arial, sans-serif; display: flex; height: 100vh; background: #f4f4f4; }
+.container { display: flex; width: 100%; }
 .sidebar {
   width: 240px;
-  background: linear-gradient(180deg, #111 0%, #222 100%);
-  color: #fff;
+  background: linear-gradient(180deg,#111 0%,#222 100%);
   padding: 20px;
-  animation: slide-in 1s ease-out;
-  box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+  animation: slide-in 1s ease-out, gradientBG 10s ease infinite;
   background-size: 400% 400%;
-  animation: gradientBG 10s ease infinite;
+  box-shadow:2px 0 10px rgba(0,0,0,0.5);
 }
-
-.sidebar h1 {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 30px;
-  text-shadow: 0 0 5px rgba(255,255,255,0.2);
-}
-
-.sidebar ul {
-  list-style: none;
-}
-
-.sidebar ul li {
-  margin: 15px 0;
-}
-
+.sidebar h1 { font-size: 24px; font-weight: bold; text-shadow:0 0 5px rgba(255,255,255,0.2); margin-bottom:30px; }
+.sidebar ul { list-style: none; }
+.sidebar ul li { margin:15px 0; }
 .sidebar ul li a {
-  display: inline-block;
-  color: #fff;
-  font-size: 16px;
-  text-decoration: none;
-  padding: 5px 0;
-  transition: all 0.3s;
-  position: relative;
+  position: relative; display:inline-block; color:#fff;
+  font-size:16px; text-decoration:none; padding:5px 0;
+  transition: color .3s;
 }
-
 .sidebar ul li a::before {
-  content: '▶';
-  position: absolute;
-  left: -20px;
-  opacity: 0;
-  transition: 0.3s;
+  content:'▶'; position:absolute; left:-20px; opacity:0; transition:.3s;
 }
+.sidebar ul li a:hover::before { opacity:1; left:-15px; color:#00ffcc; }
+.sidebar ul li a:hover { color:#00ffcc; }
 
-.sidebar ul li a:hover::before {
-  opacity: 1;
-  left: -15px;
-  color: #00ffcc;
-}
-
-.sidebar ul li a:hover {
-  color: #00ffcc;
-}
-
-.main-content {
-  flex: 1;
-  padding: 30px;
-  overflow-y: auto;
-}
-
-.main-content h2 {
-  margin-bottom: 20px;
-}
+.main-content { flex:1; padding:30px; overflow-y:auto; }
+.main-content h2 { margin-bottom:20px; }
 
 .product-grid {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
+  display:flex; flex-wrap:wrap; gap:20px;
 }
 
 .product-card {
-  background: #fff;
-  border-radius: 8px;
-  padding: 15px;
-  width: 250px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  background:#fff; width:250px; padding:15px;
+  border-radius:8px; text-align:center;
+  box-shadow:0 2px 5px rgba(0,0,0,0.1);
+  transition:transform .3s;
 }
+.product-card:hover { transform:scale(1.03); }
 
 .product-card img {
-  max-width: 100%;
-  height: 100px;
-  object-fit: contain;
-  margin-bottom: 10px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  max-width:100%; height:100px;
+  object-fit:contain;
+  margin:0 auto 10px;
+  display:block;
 }
 
-.product-card h3 {
-  font-size: 18px;
-  margin-bottom: 5px;
-}
-
-.product-card p {
-  margin-bottom: 10px;
-  color: #444;
-}
-
-.product-card del {
-  color: #999;
-  margin-right: 5px;
-}
+.product-card h3 { font-size:18px; margin-bottom:5px; }
+.product-card p { margin-bottom:10px; color:#444; }
+.product-card del { color:#999; margin-right:5px; }
 
 .btn {
-  display: inline-block;
-  padding: 8px 12px;
-  background-color: #111;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 4px;
-  font-size: 14px;
+  display:inline-block; padding:8px 12px;
+  background:#111; color:#fff;
+  text-decoration:none; border-radius:4px;
+  font-size:14px;
 }
-
-.btn:hover {
-  background-color: #333;
-}
+.btn:hover { background:#333; }
 
 .whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #25d366;
-  color: #fff;
-  font-size: 24px;
-  padding: 12px;
-  border-radius: 50%;
-  text-align: center;
-  text-decoration: none;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-  z-index: 1000;
+  position:fixed; bottom:20px; right:20px;
+  background:#25d366; padding:12px;
+  border-radius:50%; box-shadow:0 2px 6px rgba(0,0,0,0.3);
+  z-index:1000;
 }
+.whatsapp-float img { width:30px; height:auto; }
 
-.whatsapp-float:hover {
-  background-color: #1ebc5c;
-}
-
-/* Animaciones */
 @keyframes slide-in {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+  from { transform:translateX(-100%); opacity:0; }
+  to { transform:translateX(0); opacity:1; }
 }
-
 @keyframes gradientBG {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
 }
