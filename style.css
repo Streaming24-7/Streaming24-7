@@ -1,127 +1,126 @@
-/* GENERAL */
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  display: flex;
-  background-color: #f4f4f4;
-}
-
-/* SIDEBAR */
-.sidebar {
-  width: 250px;
-  background-color: #111;
-  color: white;
-  height: 100vh;
-  padding: 20px;
-  position: fixed;
-  overflow-y: auto;
-}
-
-.sidebar .logo {
-  text-align: center;
-}
-
-.sidebar .logo img {
-  width: 50px;
-  margin-bottom: 10px;
-}
-
-.sidebar input {
-  width: 100%;
-  padding: 8px;
-  margin: 20px 0;
-  border: none;
-  border-radius: 4px;
-}
-
-.sidebar nav ul {
-  list-style: none;
   padding: 0;
 }
 
-.sidebar nav ul li {
+body {
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  height: 100vh;
+  background-color: #f4f4f4;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+}
+
+.sidebar {
+  width: 240px;
+  background-color: #111;
+  color: #fff;
+  padding: 20px;
+}
+
+.sidebar h1 {
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
   margin: 15px 0;
 }
 
-.sidebar nav ul li a {
-  color: white;
+.sidebar ul li a {
+  color: #fff;
   text-decoration: none;
-  font-weight: bold;
-  display: block;
+  font-size: 16px;
 }
 
-.sidebar nav ul li a:hover {
-  color: #ff3c00;
+.sidebar ul li a:hover {
+  text-decoration: underline;
 }
 
-/* MAIN CONTENT */
-.content {
-  margin-left: 270px;
-  padding: 30px;
+.main-content {
   flex: 1;
+  padding: 30px;
+  overflow-y: auto;
 }
 
-/* PRODUCT GRID */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+.main-content h2 {
+  margin-bottom: 20px;
+}
+
+.product-grid {
+  display: flex;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
-.card {
-  background-color: #fff;
+.product-card {
+  background: #fff;
   border-radius: 8px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 15px;
+  width: 250px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   text-align: center;
-  padding: 20px;
-  transition: transform 0.3s ease;
 }
 
-.card:hover {
-  transform: scale(1.03);
+.product-card img {
+  width: 120px;
+  height: auto;
+  margin-bottom: 10px;
 }
 
-.card img {
-  max-width: 100%;
-  height: 120px;
-  object-fit: contain;
-  margin-bottom: 15px;
+.product-card h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
 }
 
-.card h2 {
-  font-size: 1em;
-  margin: 10px 0;
+.product-card p {
+  margin-bottom: 10px;
+  color: #444;
 }
 
-.card p {
-  margin: 10px 0;
+.product-card del {
+  color: #999;
+  margin-right: 5px;
 }
 
-.card a {
+.btn {
   display: inline-block;
-  padding: 8px 16px;
+  padding: 8px 12px;
   background-color: #111;
-  color: white;
+  color: #fff;
   text-decoration: none;
   border-radius: 4px;
-  margin-top: 10px;
+  font-size: 14px;
 }
 
-.card a:hover {
-  background-color: #ff3c00;
+.btn:hover {
+  background-color: #333;
 }
 
-/* WHATSAPP FLOATING BUTTON */
-.whatsapp-button {
+.whatsapp-float {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: #25d366;
-  color: white;
-  font-size: 28px;
-  padding: 12px 16px;
+  background-color: #25d366;
+  color: #fff;
+  font-size: 24px;
+  padding: 15px;
   border-radius: 50%;
+  text-align: center;
   text-decoration: none;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-  z-index: 999;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  z-index: 1000;
+}
+
+.whatsapp-float:hover {
+  background-color: #1ebc5c;
 }
