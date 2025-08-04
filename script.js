@@ -1,121 +1,111 @@
-// Datos de productos
-const productos = [
+const products = [
   {
     id: 1,
-    nombre: "Netflix",
-    precio: 7500,
-    stock: 10,
-    imagen: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg"
+    name: "Netflix Premium",
+    price: 3500,
+    originalPrice: 8000,
+    img: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg",
   },
   {
     id: 2,
-    nombre: "Amazon Prime",
-    precio: 5000,
-    stock: 8,
-    imagen: "https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.svg"
-  }
+    name: "Prime Video",
+    price: 4200,
+    originalPrice: 7000,
+    img: "https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png",
+  },
+  {
+    id: 3,
+    name: "Disney+ Premium",
+    price: 5500,
+    originalPrice: 8000,
+    img: "https://upload.wikimedia.org/wikipedia/commons/3/3e/Disney%2B_logo.svg",
+  },
 ];
 
-// Variables carrito
-let carrito = [];
+const productsContainer = document.getElementById("products");
+const cartItemsContainer = document.getElementById("cart-items");
+const cartTotal = document.getElementById("cart-total");
+const emptyCartMessage = document.getElementById("empty-cart");
+const clearCartBtn = document.getElementById("clear-cart");
 
-// Referencias DOM
-const productGrid = document.getElementById("product-grid");
-const carritoModal = document.getElementById("carrito-modal");
-const carritoItems = document.getElementById("carrito-items");
-const totalEl = document.getElementById("total");
-const carritoBtn = document.getElementById("carrito-btn");
-const closeCarritoBtn = document.getElementById("close-carrito");
-const vaciarCarritoBtn = document.getElementById("vaciar-carrito");
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-// Función para mostrar productos
-function mostrarProductos() {
-  productGrid.innerHTML = "";
-  productos.forEach(producto => {
+function renderProducts() {
+  products.forEach((product) => {
     const card = document.createElement("div");
     card.className = "product-card";
     card.innerHTML = `
-      <img src="${producto.imagen}" alt="${producto.nombre}" />
-      <h3>${producto.nombre}</h3>
-      <p>Precio: $${producto.precio.toLocaleString()}</p>
-      <p>Stock: ${producto.stock}</p>
-      <button class="btn" onclick="agregarAlCarrito(${producto.id})" ${producto.stock === 0 ? 'disabled' : ''}>
-        ${producto.stock === 0 ? 'Agotado' : 'Agregar al carrito'}
-      </button>
+      <img src="${product.img}" alt="${product.name}" />
+      <h3>${product.name}</h3>
+      <p><del>$${product.originalPrice.toLocaleString()}</del> $${product.price.toLocaleString()}</p>
+      <button class="btn" onclick="addToCart(${product.id})">Comprar ahora</button>
     `;
-    productGrid.appendChild(card);
+    productsContainer.appendChild(card);
   });
 }
 
-// Agregar producto al carrito
-function agregarAlCarrito(id) {
-  const producto = productos.find(p => p.id === id);
-  if (!producto || producto.stock === 0) return;
-
-  const itemCarrito = carrito.find(item => item.id === id);
-
-  if (itemCarrito) {
-    if (itemCarrito.cantidad < producto.stock) {
-      itemCarrito.cantidad++;
-    } else {
-      alert("No hay más stock disponible de este producto");
-      return;
-    }
-  } else {
-    carrito.push({ id: producto.id, nombre: producto.nombre, precio: producto.precio, cantidad: 1 });
+function renderCart() {
+  cartItemsContainer.innerHTML = "";
+  if (cart.length === 0) {
+    emptyCartMessage.style.display = "block";
+    cartTotal.style.display = "none";
+    clearCartBtn.style.display = "none";
+    return;
   }
 
-  mostrarCarrito();
-}
+  emptyCartMessage.style.display = "none";
+  cartTotal.style.display = "block";
+  clearCartBtn.style.display = "inline-block";
 
-// Mostrar carrito en modal
-function mostrarCarrito() {
-  carritoItems.innerHTML = "";
   let total = 0;
+  cart.forEach((item) => {
+    const product = products.find((p) => p.id === item.id);
+    total += product.price * item.quantity;
 
-  carrito.forEach(item => {
-    total += item.precio * item.cantidad;
-    const div = document.createElement("div");
-    div.innerHTML = `
-      <strong>${item.nombre}</strong> x${item.cantidad} - $${(item.precio * item.cantidad).toLocaleString()}
-      <button onclick="eliminarDelCarrito(${item.id})" style="float:right;background:red;color:white;border:none;border-radius:3px;cursor:pointer;">X</button>
-    `;
-    carritoItems.appendChild(div);
+    const li = document.createElement("li");
+    li.textContent = `${product.name} x ${item.quantity} - $${(
+      product.price * item.quantity
+    ).toLocaleString()}`;
+
+    const removeBtn = document.createElement("button");
+    removeBtn.textContent = "×";
+    removeBtn.className = "btn";
+    removeBtn.style.marginLeft = "10px";
+    removeBtn.onclick = () => removeFromCart(product.id);
+
+    li.appendChild(removeBtn);
+    cartItemsContainer.appendChild(li);
   });
 
-  totalEl.textContent = `Total: $${total.toLocaleString()}`;
-  carritoModal.style.display = "block";
+  cartTotal.textContent = `Total: $${total.toLocaleString()}`;
+  saveCart();
 }
 
-// Eliminar producto del carrito
-function eliminarDelCarrito(id) {
-  carrito = carrito.filter(item => item.id !== id);
-  mostrarCarrito();
-}
-
-// Vaciar carrito
-vaciarCarritoBtn.addEventListener("click", () => {
-  carrito = [];
-  mostrarCarrito();
-});
-
-// Abrir carrito
-carritoBtn.addEventListener("click", e => {
-  e.preventDefault();
-  mostrarCarrito();
-});
-
-// Cerrar modal
-closeCarritoBtn.addEventListener("click", () => {
-  carritoModal.style.display = "none";
-});
-
-// Cerrar modal clic afuera
-window.addEventListener("click", e => {
-  if (e.target === carritoModal) {
-    carritoModal.style.display = "none";
+function addToCart(id) {
+  const existing = cart.find((item) => item.id === id);
+  if (existing) {
+    existing.quantity++;
+  } else {
+    cart.push({ id, quantity: 1 });
   }
-});
+  renderCart();
+}
 
-// Inicializar
-mostrarProductos();
+function removeFromCart(id) {
+  cart = cart.filter((item) => item.id !== id);
+  renderCart();
+}
+
+function clearCart() {
+  cart = [];
+  renderCart();
+}
+
+function saveCart() {
+  localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+clearCartBtn.addEventListener("click", clearCart);
+
+renderProducts();
+renderCart();
